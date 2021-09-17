@@ -1,0 +1,23 @@
+{
+  "extends": "stylelint-config-idiomatic-order",
+  "plugins": ["stylelint-prettier", "stylelint-scss"],
+  "rules": {
+    "prettier/prettier": true,
+    "block-no-empty": true,
+    "color-no-invalid-hex": true,
+    "unit-no-unknown": true,
+    "property-no-unknown": true,
+    "declaration-block-no-duplicate-properties": true,
+    "declaration-block-no-shorthand-property-overrides": true,
+    "selector-pseudo-class-no-unknown": true,
+    "comment-no-empty": true,
+    "no-duplicate-at-import-rules": true,
+    "no-extra-semicolons": true,
+    "shorthand-property-no-redundant-values": true,
+    "no-eol-whitespace": true,
+    "selector-pseudo-element-no-unknown": [
+      true,
+      { "ignorePseudoElements": ["ng-deep"] }
+    ]
+  }
+}

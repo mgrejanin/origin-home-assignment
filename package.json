@@ -6,7 +6,11 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "prepare": "husky install",
+    "lint": "ng lint",
+    "fix:ts": "pretty-quick",
+    "fix:css": "prettier --write \"src/**/*.scss\" && stylelint --fix \"src/**/*.scss\""
   },
   "private": true,
   "dependencies": {
@@ -24,12 +28,35 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.2.2",
+    "@angular-eslint/builder": "12.4.1",
+    "@angular-eslint/eslint-plugin": "12.4.1",
+    "@angular-eslint/eslint-plugin-template": "12.4.1",
+    "@angular-eslint/schematics": "12.4.1",
+    "@angular-eslint/template-parser": "12.4.1",
     "@angular/cli": "~12.2.2",
     "@angular/compiler-cli": "~12.2.0",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
     "@types/jest": "^27.0.1",
     "@types/node": "^12.11.1",
+    "@typescript-eslint/eslint-plugin": "4.28.2",
+    "@typescript-eslint/parser": "4.28.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.26.0",
+    "husky": "^7.0.0",
     "jest": "^27.2.0",
     "jest-preset-angular": "^10.0.0",
+    "prettier": "^2.4.1",
+    "pretty-quick": "^3.1.1",
+    "stylelint": "^13.13.1",
+    "stylelint-config-idiomatic-order": "^8.1.0",
+    "stylelint-prettier": "^1.2.0",
+    "stylelint-scss": "^3.21.0",
     "typescript": "~4.3.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
