@@ -1,0 +1,62 @@
+<div class="container">
+  <header class="container__header">
+    <img
+      class="container__header-img"
+      src="/assets/house-icon.svg"
+      alt="House icon"
+    />
+    <div>
+      <h2 class="container__header-title">Buy a house</h2>
+      <h3 class="container__header-subtitle">Saving goal</h3>
+    </div>
+  </header>
+
+  <form class="container__form form" [formGroup]="savingGoalsForm">
+    <div class="form__input-group">
+      <label class="form__input-label">Total amount</label>
+      <input
+        currencyMask
+        [options]="{
+          thousands: ',',
+          decimal: '.',
+          align: 'left',
+          prefix: '',
+          precision: 2
+        }"
+        class="form__input form__input--amount"
+        formControlName="amount"
+      />
+      <i class="form__input-dollar-sign" aria-hidden="true"></i>
+    </div>
+
+    <div class="form__input-group">
+      <label class="form__input-label">Reach goal by</label>
+      <div class="form__input-month">
+        <img src="/assets/left-arrow-icon.svg" alt="Left arrow" />
+        <div></div>
+        <img /><img src="/assets/right-arrow-icon.svg" alt="Right arrow" />
+      </div>
+      <!-- <input class="form__input" formControlName="reachDate" />
+      <i class="form__input-arrow-left" aria-hidden="true"></i>
+      <i class="form__input-arrow-right" aria-hidden="true"></i> -->
+    </div>
+
+    <div class="form__feedback feedback">
+      <div class="feedback__monthly-amount">
+        <div class="feedback__monthly-amount-text">Monthly amount</div>
+        <div class="feedback__monthly-amount-value">$521</div>
+      </div>
+      <div class="feedback__description">
+        <p>
+          You’re planning
+          <span class="feedback__emphasis-text">48 monthly deposits</span>
+          to reach your
+          <span class="feedback__emphasis-text">$25,000</span> goal by
+          <span class="feedback__emphasis-text">October 2020.</span>
+        </p>
+      </div>
+    </div>
+
+    <saving-goals-button type="submit">Confirm</saving-goals-button>
+  </form>
+</div>

@@ -17,7 +17,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "app",
+            "prefix": "savingGoals",
             "style": "camelCase"
           }
         ],
@@ -25,12 +25,11 @@
           "error",
           {
             "type": "element",
-            "prefix": "app",
+            "prefix": "saving-goals",
             "style": "kebab-case"
           }
         ],
         "no-console": ["error"],
-        "no-unused-vars": "error",
         "@typescript-eslint/no-unused-vars": ["error"],
         "@typescript-eslint/no-explicit-any": ["error"]
       }
