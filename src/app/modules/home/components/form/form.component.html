@@ -31,31 +31,38 @@
 
     <div class="form__input-group">
       <label class="form__input-label">Reach goal by</label>
-      <div class="form__input-month">
-        <img src="/assets/left-arrow-icon.svg" alt="Left arrow" />
-        <div></div>
-        <img /><img src="/assets/right-arrow-icon.svg" alt="Right arrow" />
+      <input type="date" formControlName="reachDate" [min]="minDate" hidden />
+      <div class="form__input-month-container">
+        <img
+          (click)="setPreviousMonth()"
+          [ngClass]="{
+            'form__input-month-arrow': true,
+            'form__input-month-arrow--disabled': !this.canSetPreviousMonth
+          }"
+          src="/assets/left-arrow-icon.svg"
+          alt="Left arrow"
+        />
+        <div class="form__input-month">
+          <div class="form__input-month-current-month">
+            {{ reachDateMonth }}
+          </div>
+          <div class="form__input-month-current-year">{{ reachDateYear }}</div>
+        </div>
+        <img
+          (click)="setNextMonth()"
+          class="form__input-month-arrow"
+          src="/assets/right-arrow-icon.svg"
+          alt="Right arrow"
+        />
       </div>
-      <!-- <input class="form__input" formControlName="reachDate" />
-      <i class="form__input-arrow-left" aria-hidden="true"></i>
-      <i class="form__input-arrow-right" aria-hidden="true"></i> -->
     </div>
 
-    <div class="form__feedback feedback">
-      <div class="feedback__monthly-amount">
-        <div class="feedback__monthly-amount-text">Monthly amount</div>
-        <div class="feedback__monthly-amount-value">$521</div>
-      </div>
-      <div class="feedback__description">
-        <p>
-          You’re planning
-          <span class="feedback__emphasis-text">48 monthly deposits</span>
-          to reach your
-          <span class="feedback__emphasis-text">$25,000</span> goal by
-          <span class="feedback__emphasis-text">October 2020.</span>
-        </p>
-      </div>
-    </div>
+    <saving-goals-feedback-card
+      [totalAmount]="savingGoalsForm.get('amount')?.value"
+      [finalDate]="finalDate"
+      [numberOfMonths]="numberOfMonths"
+      [monthlyAmount]="savingGoalsForm.get('amount')?.value / numberOfMonths"
+    ></saving-goals-feedback-card>
 
     <saving-goals-button type="submit">Confirm</saving-goals-button>
   </form>

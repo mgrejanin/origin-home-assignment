@@ -7,6 +7,7 @@ import { FormComponent } from './components/form/form.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './pages/home.component';
 import { ButtonComponent } from './components/button/button.component';
+import { FeedbackCardComponent } from './components/feedback-card/feedback-card.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { ButtonComponent } from './components/button/button.component';
     HomeComponent,
     HeaderComponent,
     ButtonComponent,
+    FeedbackCardComponent,
   ],
   imports: [
     CommonModule,
