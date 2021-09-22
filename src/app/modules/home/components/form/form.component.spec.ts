@@ -84,6 +84,22 @@ describe('FormComponent', () => {
     expect(component.canChoosePreviousMonth).toBeFalsy();
   });
 
+  it('should call setGoalMonth by a keydown event with ArrowRight code', () => {
+    const spy = jest.spyOn(component, 'setGoalMonth');
+    const event = new KeyboardEvent('keydown', { code: 'ArrowRight' });
+
+    component.setGoalMonthByKeyboardArrows(event);
+    expect(spy).toHaveBeenCalledWith('next');
+  });
+
+  it('should call setGoalMonth by a keydown event with ArrowLeft code', () => {
+    const spy = jest.spyOn(component, 'setGoalMonth');
+    const event = new KeyboardEvent('keydown', { code: 'ArrowLeft' });
+
+    component.setGoalMonthByKeyboardArrows(event);
+    expect(spy).toHaveBeenCalledWith('prev');
+  });
+
   it('should have setGoalMonth method and choose the next month', () => {
     const formDate = component.getFormDate();
     formDate.setMonth(formDate.getMonth() + 1);
@@ -133,7 +149,7 @@ describe('FormComponent', () => {
     expect(component.getFormDate()).toBeInstanceOf(Date);
   });
 
-  it('should return the date of form', () => {
+  it('should have getFormDate method', () => {
     const expectedDate = new Date(minDate.toISOString().split('T')[0]);
     expect(component.getFormDate()).toEqual(expectedDate);
   });

@@ -11,10 +11,7 @@
     </div>
   </header>
 
-  <form
-    class="container__form form"
-    [formGroup]="savingGoalsForm"
-  >
+  <form class="container__form form" [formGroup]="savingGoalsForm">
     <div class="form__input-container">
       <div class="form__input-group">
         <label class="form__input-label">Total amount</label>
@@ -36,7 +33,11 @@
       <div class="form__input-group">
         <label class="form__input-label">Reach goal by</label>
         <input type="date" formControlName="reachDate" [min]="minDate" hidden />
-        <div class="form__input-month-container">
+        <div
+          class="form__input-month-container"
+          tabindex="0"
+          (keydown)="setGoalMonthByKeyboardArrows($event)"
+        >
           <img
             (click)="setGoalMonth('prev')"
             [ngClass]="{

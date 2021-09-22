@@ -69,6 +69,18 @@ export class FormComponent implements OnInit {
     return new Date(this.savingGoalsForm.get('reachDate')?.value);
   }
 
+  setGoalMonthByKeyboardArrows(event: KeyboardEvent): void {
+    if (event.code === 'ArrowRight') {
+      this.setGoalMonth('next');
+      return;
+    }
+
+    if (event.code === 'ArrowLeft') {
+      this.setGoalMonth('prev');
+      return;
+    }
+  }
+
   setGoalMonth(nextValue: 'prev' | 'next'): void {
     if (nextValue === 'prev' && !this.canChoosePreviousMonth) {
       return;
