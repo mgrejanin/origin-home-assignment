@@ -14,7 +14,6 @@
   <form
     class="container__form form"
     [formGroup]="savingGoalsForm"
-    (ngSubmit)="onSubmit()"
   >
     <div class="form__input-container">
       <div class="form__input-group">
@@ -42,7 +41,7 @@
             (click)="setGoalMonth('prev')"
             [ngClass]="{
               'form__input-month-arrow': true,
-              'form__input-month-arrow--disabled': !this.canSetPreviousMonth
+              'form__input-month-arrow--disabled': !this.canChoosePreviousMonth
             }"
             src="/assets/left-arrow-icon.svg"
             alt="Left arrow"

@@ -57,10 +57,6 @@ export class FormComponent implements OnInit {
   }
 
   setCanChoosePreviousMonth(): void {
-    if (this.minDate === undefined) {
-      return;
-    }
-
     if (new Date(this.minDate).getTime() === this.getFormDate().getTime()) {
       this.canChoosePreviousMonth = false;
       return;
@@ -90,11 +86,5 @@ export class FormComponent implements OnInit {
     this.savingGoalsForm
       .get('reachDate')
       ?.setValue(date.toISOString().split('T')[0]);
-  }
-
-  onSubmit(): void {
-    if (this.savingGoalsForm.invalid) {
-      return;
-    }
   }
 }

@@ -1,18 +1,25 @@
 <div class="feedback-card">
   <div class="feedback-card__monthly-amount">
     <div class="feedback-card__monthly-amount-text">Monthly amount</div>
-    <div class="feedback-card__monthly-amount-value">{{ (totalAmount / monthsUntilGoal) | currency }}</div>
+    <div class="feedback-card__monthly-amount-value">
+      {{ totalAmount / monthsUntilGoal | currency }}
+    </div>
   </div>
   <div class="feedback-card__description">
     <p>
       You’re planning
-      <span class="feedback-card__emphasis-text"
+      <span
+        class="feedback-card__emphasis-text feedback-card__months-until-goal"
         >{{ monthsUntilGoal }} monthly deposits</span
       >
       to reach your
-      <span class="feedback-card__emphasis-text">{{ totalAmount | currency}}</span> goal
-      by
-      <span class="feedback-card__emphasis-text">{{ goalFinalDate }}.</span>
+      <span class="feedback-card__emphasis-text feedback-card__total-amount">{{
+        totalAmount | currency
+      }}</span>
+      goal by
+      <span class="feedback-card__emphasis-text feedback-card__goal-final-date"
+        >{{ goalFinalDate }}.</span
+      >
     </p>
   </div>
 </div>
