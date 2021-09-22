@@ -6,8 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./feedback-card.component.scss'],
 })
 export class FeedbackCardComponent {
-  @Input() monthlyAmount: number;
-  @Input() numberOfMonths: number;
-  @Input() totalAmount: string;
-  @Input() finalDate: string;
+  @Input() monthsUntilGoal: number;
+  @Input() totalAmount: number;
+  @Input() goalFinalDate: string;
 }

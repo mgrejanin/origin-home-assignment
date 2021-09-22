@@ -11,9 +11,9 @@ export class FormComponent implements OnInit {
   minDate: string;
   reachDateMonth: string;
   reachDateYear: number;
-  canSetPreviousMonth: boolean = false;
-  finalDate: string;
-  numberOfMonths: number = 0;
+  canChoosePreviousMonth: boolean = false;
+  goalFinalDate: string;
+  monthsUntilGoal: number = 0;
 
   constructor(private formBuilder: FormBuilder) {
     this.setMinDate();
@@ -26,8 +26,8 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
     this.savingGoalsForm.valueChanges.subscribe(() => {
       this.setFeedbackCardData();
-      this.setCanSetPreviousDate();
-      this.setNumberOfMonths();
+      this.setCanChoosePreviousMonth();
+      this.setMonthsUntilGoal();
     });
 
     this.setFormDate(new Date(this.minDate));
@@ -39,11 +39,11 @@ export class FormComponent implements OnInit {
     this.minDate = minDate.toISOString().split('T')[0];
   }
 
-  setNumberOfMonths(): void {
+  setMonthsUntilGoal(): void {
     const startDate = new Date();
     const finalDate = this.getFormDate();
     const yearsDiff = finalDate.getFullYear() - startDate.getFullYear();
-    this.numberOfMonths =
+    this.monthsUntilGoal =
       yearsDiff * 12 + (finalDate.getMonth() - startDate.getMonth());
   }
 
@@ -53,20 +53,20 @@ export class FormComponent implements OnInit {
       month: 'long',
     });
     this.reachDateYear = formDate.getFullYear();
-    this.finalDate = `${this.reachDateMonth} ${this.reachDateYear}`;
+    this.goalFinalDate = `${this.reachDateMonth} ${this.reachDateYear}`;
   }
 
-  setCanSetPreviousDate(): void {
+  setCanChoosePreviousMonth(): void {
     if (this.minDate === undefined) {
       return;
     }
 
     if (new Date(this.minDate).getTime() === this.getFormDate().getTime()) {
-      this.canSetPreviousMonth = false;
+      this.canChoosePreviousMonth = false;
       return;
     }
 
-    this.canSetPreviousMonth = true;
+    this.canChoosePreviousMonth = true;
   }
 
   getFormDate(): Date {
@@ -74,7 +74,7 @@ export class FormComponent implements OnInit {
   }
 
   setGoalMonth(nextValue: 'prev' | 'next'): void {
-    if (nextValue === 'prev' && !this.canSetPreviousMonth) {
+    if (nextValue === 'prev' && !this.canChoosePreviousMonth) {
       return;
     }
 

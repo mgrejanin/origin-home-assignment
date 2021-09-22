@@ -28,6 +28,12 @@
       font-family: var(--font-family-rubik);
       font-size: 20px;
       font-weight: 500;
+      line-height: 24px;
+
+      @media screen and (min-width: 768px) {
+        font-size: 24px;
+        line-height: 28px;
+      }
     }
 
     &-subtitle {
@@ -36,6 +42,12 @@
       font-family: var(--font-family-work-sans);
       font-size: 14px;
       font-weight: 400;
+      line-height: 21px;
+
+      @media screen and (min-width: 768px) {
+        font-size: 16px;
+        line-height: 24px;
+      }
     }
   }
 
@@ -77,6 +89,11 @@
         font-size: 14px;
         line-height: 21px;
 
+        @media screen and (min-width: 768px) {
+          font-size: 16px;
+          line-height: 24px;
+        }
+
         &-arrow {
           cursor: pointer;
 
@@ -106,7 +123,7 @@
           border-radius: 4px;
 
           @media screen and (min-width: 768px) {
-            gap: 16px;
+            width: 192px;
           }
         }
       }
@@ -121,10 +138,18 @@
       }
 
       &-amount {
+        width: 100%;
+        box-sizing: border-box;
         color: var(--blue-gray-600);
         font-family: var(--font-family-rubik);
         font-size: 20px;
         font-weight: 500;
+        line-height: 24px;
+
+        @media screen and (min-width: 768px) {
+          font-size: 24px;
+          line-height: 28px;
+        }
       }
 
       &-group {
@@ -140,6 +165,11 @@
         font-size: 12px;
         font-weight: 400;
         line-height: 18px;
+
+        @media screen and (min-width: 768px) {
+          font-size: 14px;
+          line-height: 21px;
+        }
       }
     }
   }

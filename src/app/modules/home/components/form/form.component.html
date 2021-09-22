@@ -67,9 +67,8 @@
 
     <saving-goals-feedback-card
       [totalAmount]="savingGoalsForm.get('amount')?.value"
-      [finalDate]="finalDate"
-      [numberOfMonths]="numberOfMonths"
-      [monthlyAmount]="savingGoalsForm.get('amount')?.value / numberOfMonths"
+      [goalFinalDate]="goalFinalDate"
+      [monthsUntilGoal]="monthsUntilGoal"
     ></saving-goals-feedback-card>
 
     <saving-goals-button class="container__form-button" type="submit"
