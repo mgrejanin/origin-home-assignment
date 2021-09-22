@@ -1,27 +1,35 @@
-# SavingGoals
+# Origin Frontend Take-Home Assignment
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.2.
+This project requires the latest LTS version of NodeJS and you may need to install the yarn as global dependency
 
-## Development server
+```bash
+npm install -g yarn
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+After you have cloned this repo and install the yarn, install the dependencies with:
 
-## Code scaffolding
+```
+yarn install
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+You can then start the application running:
 
-## Build
+```
+yarn start
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+That's it. Just Access `http://localhost:4200` in your browser.
 
-## Running unit tests
+### Linting and Format
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+yarn lint
+yarn fix:ts
+yarn fix:css
+```
 
-## Running end-to-end tests
+### Testing
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```
+yarn test
+```
