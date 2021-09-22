@@ -11,49 +11,57 @@
     </div>
   </header>
 
-  <form class="container__form form" [formGroup]="savingGoalsForm">
-    <div class="form__input-group">
-      <label class="form__input-label">Total amount</label>
-      <input
-        currencyMask
-        [options]="{
-          thousands: ',',
-          decimal: '.',
-          align: 'left',
-          prefix: '',
-          precision: 2
-        }"
-        class="form__input form__input--amount"
-        formControlName="amount"
-      />
-      <i class="form__input-dollar-sign" aria-hidden="true"></i>
-    </div>
-
-    <div class="form__input-group">
-      <label class="form__input-label">Reach goal by</label>
-      <input type="date" formControlName="reachDate" [min]="minDate" hidden />
-      <div class="form__input-month-container">
-        <img
-          (click)="setPreviousMonth()"
-          [ngClass]="{
-            'form__input-month-arrow': true,
-            'form__input-month-arrow--disabled': !this.canSetPreviousMonth
+  <form
+    class="container__form form"
+    [formGroup]="savingGoalsForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="form__input-container">
+      <div class="form__input-group">
+        <label class="form__input-label">Total amount</label>
+        <input
+          currencyMask
+          [options]="{
+            thousands: ',',
+            decimal: '.',
+            align: 'left',
+            prefix: '',
+            precision: 2
           }"
-          src="/assets/left-arrow-icon.svg"
-          alt="Left arrow"
+          class="form__input form__input-amount"
+          formControlName="amount"
         />
-        <div class="form__input-month">
-          <div class="form__input-month-current-month">
-            {{ reachDateMonth }}
+        <i class="form__input-dollar-sign" aria-hidden="true"></i>
+      </div>
+
+      <div class="form__input-group">
+        <label class="form__input-label">Reach goal by</label>
+        <input type="date" formControlName="reachDate" [min]="minDate" hidden />
+        <div class="form__input-month-container">
+          <img
+            (click)="setGoalMonth('prev')"
+            [ngClass]="{
+              'form__input-month-arrow': true,
+              'form__input-month-arrow--disabled': !this.canSetPreviousMonth
+            }"
+            src="/assets/left-arrow-icon.svg"
+            alt="Left arrow"
+          />
+          <div class="form__input-month">
+            <div class="form__input-month-current-month">
+              {{ reachDateMonth }}
+            </div>
+            <div class="form__input-month-current-year">
+              {{ reachDateYear }}
+            </div>
           </div>
-          <div class="form__input-month-current-year">{{ reachDateYear }}</div>
+          <img
+            (click)="setGoalMonth('next')"
+            class="form__input-month-arrow"
+            src="/assets/right-arrow-icon.svg"
+            alt="Right arrow"
+          />
         </div>
-        <img
-          (click)="setNextMonth()"
-          class="form__input-month-arrow"
-          src="/assets/right-arrow-icon.svg"
-          alt="Right arrow"
-        />
       </div>
     </div>
 
@@ -64,6 +72,8 @@
       [monthlyAmount]="savingGoalsForm.get('amount')?.value / numberOfMonths"
     ></saving-goals-feedback-card>
 
-    <saving-goals-button type="submit">Confirm</saving-goals-button>
+    <saving-goals-button class="container__form-button" type="submit"
+      >Confirm</saving-goals-button
+    >
   </form>
 </div>

@@ -13,34 +13,41 @@ export class FormComponent implements OnInit {
   reachDateYear: number;
   canSetPreviousMonth: boolean = false;
   finalDate: string;
-  numberOfMonths: number;
+  numberOfMonths: number = 0;
 
   constructor(private formBuilder: FormBuilder) {
+    this.setMinDate();
     this.savingGoalsForm = this.formBuilder.group({
       amount: [0],
       reachDate: [''],
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.savingGoalsForm.valueChanges.subscribe(() => {
-      this.setFeedbackDate();
+      this.setFeedbackCardData();
       this.setCanSetPreviousDate();
       this.setNumberOfMonths();
     });
-    this.setFormDate(new Date());
-    this.minDate = this.getFormDate().toISOString().split('T')[0];
+
+    this.setFormDate(new Date(this.minDate));
   }
 
-  setNumberOfMonths() {
-    const startDate = new Date(this.minDate);
+  setMinDate(): void {
+    const minDate = new Date();
+    minDate.setMonth(minDate.getMonth() + 1);
+    this.minDate = minDate.toISOString().split('T')[0];
+  }
+
+  setNumberOfMonths(): void {
+    const startDate = new Date();
     const finalDate = this.getFormDate();
     const yearsDiff = finalDate.getFullYear() - startDate.getFullYear();
     this.numberOfMonths =
       yearsDiff * 12 + (finalDate.getMonth() - startDate.getMonth());
   }
 
-  private setFeedbackDate() {
+  setFeedbackCardData(): void {
     const formDate = this.getFormDate();
     this.reachDateMonth = formDate.toLocaleDateString('default', {
       month: 'long',
@@ -49,7 +56,7 @@ export class FormComponent implements OnInit {
     this.finalDate = `${this.reachDateMonth} ${this.reachDateYear}`;
   }
 
-  private setCanSetPreviousDate() {
+  setCanSetPreviousDate(): void {
     if (this.minDate === undefined) {
       return;
     }
@@ -62,29 +69,32 @@ export class FormComponent implements OnInit {
     this.canSetPreviousMonth = true;
   }
 
-  getFormDate() {
+  getFormDate(): Date {
     return new Date(this.savingGoalsForm.get('reachDate')?.value);
   }
 
-  setPreviousMonth() {
-    if (!this.canSetPreviousMonth) {
+  setGoalMonth(nextValue: 'prev' | 'next'): void {
+    if (nextValue === 'prev' && !this.canSetPreviousMonth) {
       return;
     }
 
     const formDate = this.getFormDate();
-    formDate.setMonth(formDate.getMonth() - 1);
+    formDate.setMonth(
+      nextValue === 'next' ? formDate.getMonth() + 1 : formDate.getMonth() - 1
+    );
+
     this.setFormDate(formDate);
   }
 
-  setNextMonth() {
-    const formDate = this.getFormDate();
-    formDate.setMonth(formDate.getMonth() + 1);
-    this.setFormDate(formDate);
-  }
-
-  setFormDate(date: Date) {
+  setFormDate(date: Date): void {
     this.savingGoalsForm
       .get('reachDate')
       ?.setValue(date.toISOString().split('T')[0]);
+  }
+
+  onSubmit(): void {
+    if (this.savingGoalsForm.invalid) {
+      return;
+    }
   }
 }

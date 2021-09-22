@@ -4,11 +4,19 @@
   border-radius: 8px;
   box-shadow: 0px 16px 32px rgba(30, 42, 50, 0.08);
 
+  @media screen and (min-width: 768px) {
+    padding: 36px 40px 40px;
+  }
+
   &__header {
     display: flex;
     width: 100%;
     align-items: center;
     margin-bottom: 24px;
+
+    @media screen and (min-width: 768px) {
+      margin-bottom: 28px;
+    }
 
     &-img {
       margin-right: 16px;
@@ -34,15 +42,31 @@
   &__form {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 24px;
+
+    &-button {
+      padding-top: 8px;
+      text-align: center;
+    }
   }
 
   .form {
     &__input {
       height: 56px;
-      padding-left: 44px;
+      padding: 0 44px;
       border: 1px solid var(--blue-gray-50);
       border-radius: 4px;
+
+      &-container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        @media screen and (min-width: 768px) {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+      }
 
       &-month {
         display: flex;
@@ -80,6 +104,10 @@
           padding: 0 20px;
           border: 1px solid var(--blue-gray-50);
           border-radius: 4px;
+
+          @media screen and (min-width: 768px) {
+            gap: 16px;
+          }
         }
       }
 
@@ -92,7 +120,7 @@
         background: url('/assets/dollar-sign-icon.svg') no-repeat;
       }
 
-      &--amount {
+      &-amount {
         color: var(--blue-gray-600);
         font-family: var(--font-family-rubik);
         font-size: 20px;
