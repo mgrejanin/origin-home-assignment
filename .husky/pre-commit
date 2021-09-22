@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm run fix:ts && npm run fix:css && git update-index --again
+yarn fix:ts && yarn fix:css && git update-index --again
