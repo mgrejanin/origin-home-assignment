@@ -20,7 +20,8 @@
     "module": "es2020",
     "lib": ["es2018", "dom"],
     "paths": {
-      "@saving-goals/home": ["src/app/modules/home/index.ts"]
+      "@saving-goals/home": ["src/app/modules/home/index.ts"],
+      "@saving-goals/dashboard": ["src/app/modules/dashboard/index.ts"]
     }
   },
   "angularCompilerOptions": {

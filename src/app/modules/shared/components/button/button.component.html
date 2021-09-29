@@ -2,6 +2,10 @@
   <button
     class="mdc-button mdc-button--touch mdc-button--raised"
     [type]="type"
+    [ngClass]="{
+      'mdc-button--md': this.size === 'md',
+      'mdc-button--xl': this.size === 'xl'
+    }"
   >
     <span class="mdc-button__ripple"></span>
     <span class="mdc-button__touch"></span>

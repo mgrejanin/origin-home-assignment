@@ -3,10 +3,20 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'form/:slug',
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+    loadChildren: () => import('@saving-goals/home').then((m) => m.HomeModule),
+  },
+  {
+    path: 'dashboard',
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     loadChildren: () =>
-      import('@saving-goals/home').then((m) => m.HomeModule),
+      import('@saving-goals/dashboard').then((m) => m.DashboardModule),
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'dashboard',
   },
 ];
 

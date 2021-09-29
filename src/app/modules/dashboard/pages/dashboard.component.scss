@@ -1,0 +1,23 @@
+.container {
+  height: 100vh;
+  background-color: var(--blue-gray-10);
+
+  .content {
+    padding: 0px 16px;
+
+    &__goals-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &__header {
+      margin: 24px auto;
+      font-family: var(--font-family-rubik);
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 28px;
+      text-align: center;
+    }
+  }
+}

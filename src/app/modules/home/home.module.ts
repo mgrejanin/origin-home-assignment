@@ -4,23 +4,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { FormComponent } from './components/form/form.component';
-import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './pages/home.component';
-import { ButtonComponent } from './components/button/button.component';
 import { FeedbackCardComponent } from './components/feedback-card/feedback-card.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [
-    FormComponent,
-    HomeComponent,
-    HeaderComponent,
-    ButtonComponent,
-    FeedbackCardComponent,
-  ],
+  declarations: [FormComponent, HomeComponent, FeedbackCardComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     NgxCurrencyModule,
+    SharedModule,
     RouterModule.forChild([
       { path: '', pathMatch: 'full', component: HomeComponent },
     ]),

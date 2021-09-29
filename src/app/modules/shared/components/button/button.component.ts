@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class ButtonComponent {
   @Input() type: 'button' | 'menu' | 'reset' | 'submit' = 'button';
+  @Input() size: 'md' | 'xl' = 'xl';
 }

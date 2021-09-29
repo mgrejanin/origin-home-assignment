@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  padding: 12px 32px;
+  border: 1px solid var(--blue-gray-50);
+  border-radius: 8px;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+
+    &-label {
+      margin: 0;
+      color: var(--blue-gray-600);
+      font: var(--typograph-label);
+    }
+  }
+}

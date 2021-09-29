@@ -1,0 +1,19 @@
+.goal-card {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 24px 16px;
+  border: 1px solid var(--blue-gray-50);
+  background-color: var(--neutral-white);
+  border-radius: 8px;
+  box-shadow: var(--box-shadow-level-3);
+
+  &__header {
+    display: flex;
+    margin-bottom: 24px;
+    gap: 16px;
+
+    &-text {
+      font: var(--typograph-paragraph);
+    }
+  }
+}

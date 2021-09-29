@@ -6,14 +6,20 @@
     --mdc-theme-primary: var(--brand-color-primary);
     --mdc-theme-on-primary: var(--neutral-white);
 
+    width: 100%;
     font-family: var(--font-family-work-sans);
     font-size: 16px;
     font-weight: 600;
     letter-spacing: normal;
+    line-height: 16px;
     text-transform: none;
 
     @include button.height(56px);
     @include button.shape-radius(32px);
-    @include button.horizontal-padding(128px);
+    // @include button.horizontal-padding(128px);
+
+    &--md {
+      @include button.height(40px);
+    }
   }
 }

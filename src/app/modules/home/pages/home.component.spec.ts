@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
-import { HeaderComponent } from '../components/header/header.component';
+import { HeaderComponent } from '../../shared/components/header/header.component';
 import { FormComponent } from '../components/form/form.component';
-import { ButtonComponent } from '../components/button/button.component';
+import { ButtonComponent } from '../../shared/components/button/button.component';
 import { FeedbackCardComponent } from '../components/feedback-card/feedback-card.component';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { ReactiveFormsModule } from '@angular/forms';

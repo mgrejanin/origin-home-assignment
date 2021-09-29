@@ -1,17 +1,17 @@
 <div class="container">
   <header class="container__header">
-    <img
-      class="container__header-img"
-      src="/assets/house-icon.svg"
-      alt="House icon"
-    />
+    <img class="container__header-img" [src]="goal?.icon" alt="House icon" />
     <div>
-      <h2 class="container__header-title">Buy a house</h2>
+      <h2 class="container__header-title">{{ goal?.name }}</h2>
       <h3 class="container__header-subtitle">Saving goal</h3>
     </div>
   </header>
 
-  <form class="container__form form" [formGroup]="savingGoalsForm">
+  <form
+    class="container__form form"
+    [formGroup]="savingGoalsForm"
+    (ngSubmit)="onSubmit()"
+  >
     <div class="form__input-container">
       <div class="form__input-group">
         <label class="form__input-label">Total amount</label>

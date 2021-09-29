@@ -1,0 +1,19 @@
+<div class="goal-card">
+  <div class="goal-card__header">
+    <img [src]="goal.icon" alt="Goal icon" />
+    <p class="goal-card__header-text">{{ goal.name }}</p>
+  </div>
+
+  <ng-container *ngIf="goal.amount; else setupGoalButton">
+    <saving-goals-defined-goal-card
+      [amount]="goal.amount"
+      [reachDate]="goal.reachDate"
+    ></saving-goals-defined-goal-card>
+  </ng-container>
+</div>
+
+<ng-template #setupGoalButton>
+  <saving-goals-button [size]="'md'" [routerLink]="'/form/' + goal.slug"
+    >Setup goal</saving-goals-button
+  >
+</ng-template>
