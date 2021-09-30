@@ -1,11 +1,16 @@
-<div class="goal-card">
+<div
+  [ngClass]="{
+    'goal-card': true,
+    'goal-card--defined-goal': goal.amount
+  }"
+>
   <div
     [ngClass]="{
       'goal-card__header': true,
       'goal-card__header--defined-goal': goal.amount
     }"
   >
-    <img [src]="goal.icon" alt="Goal icon" />
+    <img class="goal-card__header-img" [src]="goal.icon" alt="Goal icon" />
     <p class="goal-card__header-text">{{ goal.name }}</p>
   </div>
 

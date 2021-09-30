@@ -19,10 +19,12 @@
 
   --box-shadow-level-3: 0px 8px 24px rgba(30, 42, 50, 0.08);
 
-  --typograph-paragraph: 600 14px/150% var(--font-family-work-sans);
+  --typograph-paragraph: 600 16px/24px var(--font-family-work-sans);
+  --typograph-paragraph--mobile: 600 14px/150% var(--font-family-work-sans);
   --typograph-label: 400 12px/14px var(--font-family-work-sans);
   --typograph-amount-mobile: 600 14px/21px var(--font-family-work-sans);
   --typograph-goal-info-mobile: 600 14px/21px var(--font-family-work-sans);
+  --typograph-goal-info: 600 16px/24px var(--font-family-work-sans);
 }
 
 html,

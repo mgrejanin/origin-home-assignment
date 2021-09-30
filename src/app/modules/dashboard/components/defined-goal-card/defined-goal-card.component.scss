@@ -7,6 +7,10 @@
   margin-bottom: 10px;
   border-radius: 8px;
 
+  @media screen and (min-width: 768px) {
+    padding: 12px 16px;
+  }
+
   &__info {
     display: flex;
     flex-direction: column;
@@ -22,12 +26,20 @@
       margin: 0;
       color: var(--brand-color-secondary);
       font: var(--typograph-goal-info-mobile);
+
+      @media screen and (min-width: 768px) {
+        font: var(--typograph-goal-info);
+      }
     }
 
     &-reach-date {
       margin: 0;
       color: var(--blue-gray-900);
       font: var(--typograph-goal-info-mobile);
+
+      @media screen and (min-width: 768px) {
+        font: var(--typograph-goal-info);
+      }
     }
   }
 }
