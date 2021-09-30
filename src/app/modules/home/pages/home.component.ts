@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Goal } from '../../shared/models/goal.interface';
-import { GoalService } from '../../shared/service/getGoal.service';
+import { GoalStoreQuery } from '../../shared/state/goal-store.query';
+import { GoalStoreService } from '../../shared/state/goal-store.service';
 
 @Component({
   selector: 'saving-goals-home',
@@ -10,17 +11,20 @@ import { GoalService } from '../../shared/service/getGoal.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  goal: BehaviorSubject<Goal> = new BehaviorSubject({} as Goal);
+  activeGoal$: Observable<Goal | undefined>;
 
   constructor(
-    private goalService: GoalService,
+    private goalStateService: GoalStoreService,
+    private goalStateQuery: GoalStoreQuery,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    this.activeGoal$ = this.goalStateQuery.activeGoal$;
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) =>
-      this.goal.next(this.goalService.getGoalBySlug(params['slug']))
+      this.goalStateService.setActiveGoal(params['slug'])
     );
   }
 
@@ -29,7 +33,7 @@ export class HomeComponent implements OnInit {
       return;
     }
 
-    this.goalService.updateGoalBySlug(goal);
+    this.goalStateService.updateActiveGoal(goal);
     this.router.navigate(['/dashboard']);
   }
 }

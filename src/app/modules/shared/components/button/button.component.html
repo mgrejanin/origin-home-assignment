@@ -4,7 +4,8 @@
     [type]="type"
     [ngClass]="{
       'mdc-button--md': this.size === 'md',
-      'mdc-button--xl': this.size === 'xl'
+      'mdc-button--xl': this.size === 'xl',
+      'mdc-button--secondary': this.variant === 'secondary'
     }"
   >
     <span class="mdc-button__ripple"></span>

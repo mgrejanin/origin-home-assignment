@@ -5,7 +5,7 @@
     <h1 class="content__header">Here are your savings goals!</h1>
 
     <div class="content__goals-list">
-      <ng-container *ngFor="let goal of goals">
+      <ng-container *ngFor="let goal of goals$ | async">
         <saving-goals-goal-card [goal]="goal"></saving-goals-goal-card>
       </ng-container>
     </div>

@@ -1,5 +1,10 @@
 <div class="goal-card">
-  <div class="goal-card__header">
+  <div
+    [ngClass]="{
+      'goal-card__header': true,
+      'goal-card__header--defined-goal': goal.amount
+    }"
+  >
     <img [src]="goal.icon" alt="Goal icon" />
     <p class="goal-card__header-text">{{ goal.name }}</p>
   </div>
@@ -9,11 +14,15 @@
       [amount]="goal.amount"
       [reachDate]="goal.reachDate"
     ></saving-goals-defined-goal-card>
+
+    <saving-goals-button (click)="editGoal()" size="md" variant="secondary"
+      >Edit goal</saving-goals-button
+    >
   </ng-container>
 </div>
 
 <ng-template #setupGoalButton>
-  <saving-goals-button [size]="'md'" [routerLink]="'/form/' + goal.slug"
+  <saving-goals-button size="md" [routerLink]="'/form/' + goal.slug"
     >Setup goal</saving-goals-button
   >
 </ng-template>

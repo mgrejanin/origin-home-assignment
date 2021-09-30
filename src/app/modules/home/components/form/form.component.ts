@@ -1,12 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Goal } from 'src/app/modules/shared/models/goal.interface';
 
@@ -15,10 +7,9 @@ import { Goal } from 'src/app/modules/shared/models/goal.interface';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
 })
-export class FormComponent implements OnInit, OnChanges {
-  @Input() goal: Goal | null;
-  @Output() updateGoal: EventEmitter<Goal | null> =
-    new EventEmitter<Goal | null>();
+export class FormComponent implements OnInit {
+  @Input() goal: Goal;
+  @Output() updateGoal: EventEmitter<Goal> = new EventEmitter<Goal>();
 
   savingGoalsForm: FormGroup;
   minDate: string;
@@ -31,7 +22,7 @@ export class FormComponent implements OnInit, OnChanges {
   constructor(private formBuilder: FormBuilder) {
     this.setMinDate();
     this.savingGoalsForm = this.formBuilder.group({
-      amount: [this.goal?.amount],
+      amount: [0],
       reachDate: [''],
     });
   }
@@ -43,13 +34,18 @@ export class FormComponent implements OnInit, OnChanges {
       this.setMonthsUntilGoal();
     });
 
+    if (this.goal.amount) {
+      this.updateFormValue();
+      return;
+    }
+
     this.setFormDate(new Date(this.minDate));
   }
 
-  ngOnChanges(data: SimpleChanges): void {
+  updateFormValue(): void {
     this.savingGoalsForm.setValue({
-      amount: data.goal.currentValue['amount'],
-      reachDate: data.goal.currentValue['reachDate'],
+      amount: this.goal.amount,
+      reachDate: this.goal.reachDate,
     });
   }
 

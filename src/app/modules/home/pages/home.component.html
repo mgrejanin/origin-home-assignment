@@ -6,9 +6,12 @@
       Let's plan your
       <span class="content__header-emphasis-text">saving goal.</span>
     </h1>
-    <saving-goals-form
-      [goal]="goal | async"
-      (updateGoal)="updateActiveGoal($event)"
-    ></saving-goals-form>
+
+    <ng-container *ngIf="activeGoal$ | async as activeGoal">
+      <saving-goals-form
+        [goal]="activeGoal"
+        (updateGoal)="updateActiveGoal($event)"
+      ></saving-goals-form>
+    </ng-container>
   </section>
 </div>
